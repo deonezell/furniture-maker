@@ -1,0 +1,1065 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Be Your Own Furniture Maker</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,600;1,300&display=swap" rel="stylesheet">
+<style>
+:root {
+  --warm-cream: #F5EDE3;
+  --deep-walnut: #3E2A1C;
+  --honey-oak: #C8944A;
+  --soft-pine: #D4B87A;
+  --linen: #EDE6DA;
+  --charcoal: #2C2420;
+  --sage: #8B9A7E;
+  --rust: #B5603A;
+  --paper: #FAF7F2;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--paper);
+  color: var(--charcoal);
+  overflow-x: hidden;
+}
+
+/* HERO */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: var(--deep-walnut);
+  color: var(--warm-cream);
+  position: relative;
+  overflow: hidden;
+  padding: 2rem;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: 
+    repeating-linear-gradient(0deg, transparent, transparent 40px, rgba(200,148,74,0.03) 40px, rgba(200,148,74,0.03) 41px),
+    repeating-linear-gradient(90deg, transparent, transparent 40px, rgba(200,148,74,0.03) 40px, rgba(200,148,74,0.03) 41px);
+  pointer-events: none;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 30% 50%, rgba(200,148,74,0.15) 0%, transparent 60%),
+              radial-gradient(ellipse at 70% 70%, rgba(181,96,58,0.1) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.hero-badge {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 500;
+  font-size: 0.75rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--honey-oak);
+  margin-bottom: 2rem;
+  position: relative;
+  z-index: 1;
+  opacity: 0;
+  animation: fadeUp 0.8s ease 0.2s forwards;
+}
+
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 900;
+  font-size: clamp(3rem, 8vw, 7rem);
+  line-height: 1.05;
+  max-width: 900px;
+  position: relative;
+  z-index: 1;
+  opacity: 0;
+  animation: fadeUp 1s ease 0.4s forwards;
+}
+
+.hero h1 em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--honey-oak);
+}
+
+.hero-subtitle {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.1rem, 2vw, 1.5rem);
+  font-weight: 300;
+  font-style: italic;
+  max-width: 550px;
+  margin-top: 1.5rem;
+  line-height: 1.6;
+  color: rgba(245,237,227,0.7);
+  position: relative;
+  z-index: 1;
+  opacity: 0;
+  animation: fadeUp 1s ease 0.7s forwards;
+}
+
+.hero-scroll {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+  opacity: 0;
+  animation: fadeUp 1s ease 1s forwards;
+}
+
+.hero-scroll span {
+  display: block;
+  width: 1px;
+  height: 40px;
+  background: var(--honey-oak);
+  margin: 0 auto;
+  animation: scrollPulse 2s ease infinite;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.3; transform: scaleY(0.6); }
+  50% { opacity: 1; transform: scaleY(1); }
+}
+
+/* NAV */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(250,247,242,0.92);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(62,42,28,0.08);
+  padding: 0 2rem;
+}
+
+nav ul {
+  display: flex;
+  justify-content: center;
+  gap: 0;
+  list-style: none;
+  max-width: 900px;
+  margin: 0 auto;
+  overflow-x: auto;
+}
+
+nav a {
+  display: block;
+  padding: 1rem 1.5rem;
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--deep-walnut);
+  font-weight: 500;
+  transition: color 0.3s, background 0.3s;
+  white-space: nowrap;
+}
+
+nav a:hover {
+  color: var(--honey-oak);
+  background: rgba(200,148,74,0.06);
+}
+
+/* SECTIONS */
+section {
+  padding: 5rem 2rem;
+}
+
+.section-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--honey-oak);
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 700;
+  color: var(--deep-walnut);
+  line-height: 1.15;
+  margin-bottom: 1.5rem;
+}
+
+/* INTRO */
+.intro {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.intro-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.25rem;
+  line-height: 1.9;
+  color: rgba(44,36,32,0.8);
+  max-width: 650px;
+  margin: 0 auto;
+}
+
+.intro-text p + p { margin-top: 1.5rem; }
+
+/* FEATURES */
+.features {
+  background: var(--linen);
+}
+
+.features-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.feature-card {
+  background: var(--paper);
+  padding: 2.5rem 2rem;
+  border: 1px solid rgba(62,42,28,0.06);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.feature-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(62,42,28,0.08);
+}
+
+.feature-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--deep-walnut);
+  margin-bottom: 0.75rem;
+}
+
+.feature-card p {
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: rgba(44,36,32,0.7);
+}
+
+.feature-icon {
+  width: 40px;
+  height: 3px;
+  background: var(--honey-oak);
+  margin-bottom: 1.5rem;
+}
+
+/* IDEAL FOR */
+.ideal-section {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.ideal-tags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-top: 2.5rem;
+}
+
+.ideal-tag {
+  padding: 0.75rem 1.75rem;
+  border: 1px solid rgba(62,42,28,0.15);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--deep-walnut);
+  transition: all 0.3s;
+  cursor: default;
+}
+
+.ideal-tag:hover {
+  background: var(--deep-walnut);
+  color: var(--warm-cream);
+  border-color: var(--deep-walnut);
+}
+
+/* DATA TABLE */
+.data-section {
+  background: var(--deep-walnut);
+  color: var(--warm-cream);
+}
+
+.data-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.data-section .section-label { color: var(--soft-pine); }
+.data-section .section-title { color: var(--warm-cream); }
+
+.data-table-wrapper {
+  overflow-x: auto;
+  margin-top: 2.5rem;
+  -webkit-overflow-scrolling: touch;
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+  min-width: 700px;
+}
+
+.data-table th {
+  text-align: left;
+  padding: 1rem 1.25rem;
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--honey-oak);
+  border-bottom: 1px solid rgba(245,237,227,0.15);
+  font-weight: 600;
+}
+
+.data-table td {
+  padding: 0.85rem 1.25rem;
+  border-bottom: 1px solid rgba(245,237,227,0.06);
+  color: rgba(245,237,227,0.85);
+}
+
+.data-table tbody tr {
+  transition: background 0.2s;
+}
+
+.data-table tbody tr:hover {
+  background: rgba(200,148,74,0.08);
+}
+
+.data-table .price {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  color: var(--soft-pine);
+}
+
+/* GALLERY */
+.gallery-section {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.gallery-category {
+  margin-top: 3.5rem;
+}
+
+.gallery-category-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  color: var(--deep-walnut);
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid rgba(62,42,28,0.1);
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.gallery-item {
+  position: relative;
+  overflow: hidden;
+  background: var(--linen);
+  cursor: pointer;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.6s ease;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.03);
+}
+
+.gallery-caption {
+  padding: 1rem 1.25rem;
+  background: var(--paper);
+  border-top: 1px solid rgba(62,42,28,0.06);
+}
+
+.gallery-caption p {
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: rgba(44,36,32,0.7);
+}
+
+.gallery-caption .caption-title {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--deep-walnut);
+  margin-bottom: 0.3rem;
+}
+
+/* PLANS */
+.plans-section {
+  background: var(--linen);
+}
+
+.plans-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.plans-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.plan-card {
+  background: var(--paper);
+  overflow: hidden;
+  border: 1px solid rgba(62,42,28,0.06);
+}
+
+.plan-card img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.plan-card-info {
+  padding: 1.5rem;
+}
+
+.plan-card-info h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.15rem;
+  color: var(--deep-walnut);
+}
+
+.plan-card-info p {
+  font-size: 0.85rem;
+  color: rgba(44,36,32,0.6);
+  margin-top: 0.4rem;
+  line-height: 1.6;
+}
+
+/* FULL WIDTH IMAGE SECTIONS */
+.page-image {
+  max-width: 700px;
+  margin: 2.5rem auto 0;
+  overflow: hidden;
+  border: 1px solid rgba(62,42,28,0.08);
+}
+
+.page-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.page-image figcaption {
+  padding: 1rem 1.25rem;
+  font-size: 0.85rem;
+  color: rgba(44,36,32,0.65);
+  line-height: 1.6;
+  background: var(--paper);
+  border-top: 1px solid rgba(62,42,28,0.06);
+}
+
+/* LIGHTBOX */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(44,36,32,0.95);
+  z-index: 1000;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  cursor: zoom-out;
+  padding: 2rem;
+}
+
+.lightbox.active { display: flex; }
+
+.lightbox img {
+  max-width: 90vw;
+  max-height: 90vh;
+  object-fit: contain;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  width: 40px;
+  height: 40px;
+  background: none;
+  border: 1px solid rgba(245,237,227,0.3);
+  color: var(--warm-cream);
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s;
+}
+
+.lightbox-close:hover {
+  background: rgba(245,237,227,0.1);
+}
+
+/* AUTHOR */
+.author-section {
+  background: var(--deep-walnut);
+  color: var(--warm-cream);
+}
+
+.author-inner {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.author-section .section-label {
+  color: var(--soft-pine);
+}
+
+.author-section .section-title {
+  color: var(--warm-cream);
+}
+
+.author-name {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  font-weight: 700;
+  color: var(--warm-cream);
+  margin-bottom: 0.25rem;
+}
+
+.author-role {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.15rem;
+  font-style: italic;
+  color: var(--soft-pine);
+  margin-bottom: 2rem;
+}
+
+.author-text {
+  font-size: 0.95rem;
+  line-height: 1.8;
+  color: rgba(245,237,227,0.75);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.author-text p + p {
+  margin-top: 1.25rem;
+}
+
+.author-link {
+  display: inline-block;
+  margin-top: 2rem;
+  padding: 0.75rem 2rem;
+  border: 1px solid var(--honey-oak);
+  color: var(--honey-oak);
+  text-decoration: none;
+  font-size: 0.8rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-weight: 500;
+  transition: all 0.3s;
+}
+
+.author-link:hover {
+  background: var(--honey-oak);
+  color: var(--deep-walnut);
+}
+
+/* FOOTER */
+footer {
+  background: var(--charcoal);
+  color: rgba(245,237,227,0.5);
+  text-align: center;
+  padding: 3rem 2rem;
+  font-size: 0.8rem;
+}
+
+footer .footer-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.25rem;
+  color: var(--warm-cream);
+  margin-bottom: 0.5rem;
+}
+
+/* SCROLL REVEAL */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  nav a { padding: 0.85rem 1rem; font-size: 0.65rem; }
+  section { padding: 3.5rem 1.25rem; }
+  .plans-grid { grid-template-columns: 1fr; }
+  .gallery-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <span class="hero-badge">Affordable &middot; Attractive &middot; Portable</span>
+  <h1>Be Your Own<br><em>Furniture Maker</em></h1>
+  <p class="hero-subtitle">Build beautiful, affordable home furniture with simple tools. Designed for the most economical budget&mdash;crafted by your own hands.</p>
+  <p style="font-family:'DM Sans',sans-serif;font-size:0.85rem;letter-spacing:0.15em;color:var(--honey-oak);margin-top:1.5rem;position:relative;z-index:1;opacity:0;animation:fadeUp 1s ease 0.9s forwards;">By Walter K. Zell, Architect</p>
+  <div class="hero-scroll"><span></span></div>
+</section>
+
+<!-- NAV -->
+<nav>
+  <ul>
+    <li><a href="#introduction">Introduction</a></li>
+    <li><a href="#features">Features</a></li>
+    <li><a href="#ideal">Ideal For</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#plans">Floor Plans</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#author">About the Author</a></li>
+  </ul>
+</nav>
+
+<!-- TABLE OF CONTENTS PAGE -->
+<section id="introduction">
+  <div style="max-width:800px;margin:0 auto;text-align:center;" class="reveal">
+    <span class="section-label">Book 1</span>
+    <h2 class="section-title">Contents</h2>
+    <figure class="page-image">
+      <img src="images/IMG_3197.jpeg" alt="Table of contents page from Book 1">
+      <figcaption>The table of contents for Book 1, listing sections on affordable furniture, DIY instructions, cost data for 14 projects, and prototype photographs organized by room: living room, dining room, entertainment center, bedroom, study, and kitchen.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- BUILD YOUR OWN ILLUSTRATIONS -->
+<section style="background:var(--linen);">
+  <div style="max-width:800px;margin:0 auto;text-align:center;" class="reveal">
+    <span class="section-label">Assembly Overview</span>
+    <h2 class="section-title">Build Your Own Furniture</h2>
+    <figure class="page-image">
+      <img src="images/IMG_3198.jpeg" alt="Illustration showing people assembling various furniture pieces">
+      <figcaption>Hand-drawn illustrations showing men, women, and children assembling different furniture pieces including a bookshelf, dining table, bed frame, sofa, coffee table, and desk chair. The drawings emphasize that the entire family can participate in the building process.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- INTRODUCTION TEXT -->
+<section>
+  <div style="max-width:800px;margin:0 auto;text-align:center;" class="reveal">
+    <span class="section-label">Introduction</span>
+    <h2 class="section-title">Affordable &amp; Attractive<br>Home Furniture</h2>
+    <div class="intro-text">
+      <p>If you don't consider yourself "handy" or you have never used a screwdriver, drilled screw holes, or measured before&mdash;you can build inexpensive basic pieces of furniture for your needs.</p>
+      <p>All the furniture is designed for the most economical budget. Crafting your own furniture is easier than you think. Most of the projects are assembled and finished on a single weekend.</p>
+      <p>A workspace can be sawhorses with a two-by-four foot plank over them or an old table. The garage, backyard, basement, or any uncluttered place can be the location. Now you become producer, not only a user&mdash;you will gain confidence with each and every new skill you learn.</p>
+    </div>
+    <figure class="page-image" style="margin-top:2rem;">
+      <img src="images/IMG_3199.jpeg" alt="Introduction page with full text">
+      <figcaption>The full introduction page describing the philosophy behind "Be Your Own Furniture Maker": economical, coordinated furniture that can be built with basic tools using locally sourced American wood from over 5,000 home centers. The furniture is designed to be portable and disassemblable.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- INTRODUCTION CONTINUED -->
+<section style="background:var(--linen);">
+  <div style="max-width:800px;margin:0 auto;text-align:center;" class="reveal">
+    <figure class="page-image">
+      <img src="images/IMG_3200.jpeg" alt="Introduction continued">
+      <figcaption>Continuation of the introduction explaining the intent of the "Your Own Furniture Maker" series: to provide attractive, inexpensive, functional furniture that is imaginative, easy to assemble and disassemble. The book is geared toward beginners with minimal tools, covering a complete furniture line for every room at minimum affordable cost. Plans, material cutting lists, photographs, and simple assembly instructions are included.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- IDEAL FOR -->
+<section id="ideal">
+  <div class="ideal-section reveal">
+    <span class="section-label">Who It's For</span>
+    <h2 class="section-title">Ideal For</h2>
+    <div class="ideal-tags">
+      <span class="ideal-tag">Students</span>
+      <span class="ideal-tag">Singles</span>
+      <span class="ideal-tag">Service Personnel</span>
+      <span class="ideal-tag">Young Couples</span>
+      <span class="ideal-tag">Growing Families</span>
+      <span class="ideal-tag">New Immigrants</span>
+      <span class="ideal-tag">Hobby Shop</span>
+      <span class="ideal-tag">Spare Needs</span>
+    </div>
+    <figure class="page-image" style="margin-top:2.5rem;">
+      <img src="images/IMG_3201.jpeg" alt="Ideal For page listing target audiences">
+      <figcaption>The "Ideal For" page describes the target audience: an affordable and attractive line of home furniture which can be disassembled and reassembled, perfect for students, singles, service personnel, young couples, growing families, new immigrants, hobby shops, and spare furnishing needs.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section id="features" class="features">
+  <div class="features-inner">
+    <div class="reveal" style="text-align:center;">
+      <span class="section-label">Why Build Your Own</span>
+      <h2 class="section-title">Simple Tools. Beautiful Results.</h2>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card reveal">
+        <div class="feature-icon"></div>
+        <h3>Minimal Tools</h3>
+        <p>A workspace can be sawhorses with a plank over them. A garage, backyard, or basement works perfectly as your workshop.</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon"></div>
+        <h3>Local Wood</h3>
+        <p>Wood harvested in the USA, available locally in over 5,000 home centers, precut and ready to assemble at great cost savings.</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon"></div>
+        <h3>Portable</h3>
+        <p>Disassembles into small portable packages that fit in car trunks for transportation to a new location, then reassembled.</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon"></div>
+        <h3>Complete Line</h3>
+        <p>Living room, dining room, bedroom, kitchen, and study&mdash;a full coordinated furniture line at minimum affordable cost.</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon"></div>
+        <h3>Custom Finish</h3>
+        <p>Select your own stain colors and finishes. Be proud of the design quality and harmonious style you create.</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon"></div>
+        <h3>Family Activity</h3>
+        <p>Your spouse and kids can help. Kids enjoy quality time with parents, creating lasting memories together.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DATA TABLE -->
+<section id="pricing" class="data-section">
+  <div class="data-inner">
+    <div class="reveal" style="text-align:center;">
+      <span class="section-label">Project Data</span>
+      <h2 class="section-title">Cost, Size &amp; Weight</h2>
+    </div>
+    <div class="data-table-wrapper reveal">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Furniture Item</th>
+            <th>Lumber Cost</th>
+            <th>Packed Size (L&times;W&times;H)</th>
+            <th>Wt.</th>
+            <th>Accessories</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Book Case</td><td class="price">$12.25</td><td>24&Prime;&times;10&Prime;&times;12&Prime;</td><td>E</td><td>Baskets $25</td></tr>
+          <tr><td>Chest</td><td class="price">$23.90</td><td>24&Prime;&times;16&Prime;&times;5&Prime;</td><td>A</td><td>&mdash;</td></tr>
+          <tr><td>Side Table</td><td class="price">$14.55</td><td>18&Prime;&times;10&Prime;&times;6&Prime;</td><td>C</td><td>&mdash;</td></tr>
+          <tr><td>Coffee Table</td><td class="price">$18.50</td><td>36&Prime;&times;10&Prime;&times;7&Prime;</td><td>H</td><td>Glass Top $23</td></tr>
+          <tr><td>Bed with Headboard</td><td class="price">$45.60</td><td>48&Prime;&times;24&Prime;&times;5&Prime;</td><td>P</td><td>Cushion $6</td></tr>
+          <tr><td>Dining/Desk Chair</td><td class="price">$13.50</td><td>44&Prime;&times;17&Prime;&times;2&Prime;</td><td>R</td><td>Cushion</td></tr>
+          <tr><td>Dining Table</td><td class="price">$43.15</td><td>46&Prime;&times;20&Prime;&times;2&Prime;</td><td>O</td><td>&mdash;</td></tr>
+          <tr><td>Kitchen Table</td><td class="price">$28.25</td><td>30&Prime;&times;24&Prime;&times;2&Prime;</td><td>X</td><td>Screws, glue, hinges, sandpaper</td></tr>
+          <tr><td>Study Desk</td><td class="price">$38.70</td><td>40&Prime;&times;24&Prime;&times;4&Prime;</td><td>L</td><td>&mdash;</td></tr>
+          <tr><td>Easy Chair</td><td class="price">$33.80</td><td>27&Prime;&times;24&Prime;&times;6&Prime;</td><td>B</td><td>Cushions $53</td></tr>
+          <tr><td>Foot Stool</td><td class="price">$12.75</td><td>18&Prime;&times;12&Prime;&times;3&Prime;</td><td>S</td><td>Cushion $6</td></tr>
+          <tr><td>Side Shelf</td><td class="price">$5.00</td><td>16&Prime;&times;12&Prime;&times;1&Prime;</td><td>&mdash;</td><td>Cork $2</td></tr>
+          <tr><td>Sofa</td><td class="price">$45.85</td><td>63&Prime;&times;6&Prime;&times;3&Prime;</td><td>&mdash;</td><td>Cushions $70</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <figure class="page-image" style="margin-top:2.5rem;border-color:rgba(245,237,227,0.1);">
+      <img src="images/IMG_3204.jpeg" alt="Original cost, size, weight and accessories data sheet">
+      <figcaption style="color:rgba(245,237,227,0.55);background:transparent;border-top-color:rgba(245,237,227,0.1);">The original handwritten data sheet showing lumber costs, packed dimensions for mobility, weight categories, and accessory costs for all 14 furniture projects. A US dollar bill is shown for scale reference next to a sample wood piece.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ROOM SET PRICES -->
+<section class="features">
+  <div class="features-inner">
+    <div class="reveal" style="text-align:center;">
+      <span class="section-label">Complete Room Sets</span>
+      <h2 class="section-title">Furnish Every Room</h2>
+    </div>
+    <div class="features-grid" style="margin-top:2.5rem;">
+      <div class="feature-card reveal" style="text-align:center;">
+        <h3>Living Room</h3>
+        <p style="font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;color:var(--honey-oak);margin:0.5rem 0;">$174</p>
+      </div>
+      <div class="feature-card reveal" style="text-align:center;">
+        <h3>Dining</h3>
+        <p style="font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;color:var(--honey-oak);margin:0.5rem 0;">$107</p>
+      </div>
+      <div class="feature-card reveal" style="text-align:center;">
+        <h3>Bedroom</h3>
+        <p style="font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;color:var(--honey-oak);margin:0.5rem 0;">$97</p>
+      </div>
+      <div class="feature-card reveal" style="text-align:center;">
+        <h3>Study</h3>
+        <p style="font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;color:var(--honey-oak);margin:0.5rem 0;">$52</p>
+      </div>
+      <div class="feature-card reveal" style="text-align:center;">
+        <h3>Kitchen</h3>
+        <p style="font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;color:var(--honey-oak);margin:0.5rem 0;">$55</p>
+      </div>
+      <div class="feature-card reveal" style="text-align:center;">
+        <h3>Coffee Table</h3>
+        <p style="font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;color:var(--honey-oak);margin:0.5rem 0;">$50</p>
+      </div>
+    </div>
+    <figure class="page-image" style="margin-top:2.5rem;">
+      <img src="images/IMG_3205.jpeg" alt="Sketches of all furniture pieces organized by room with prices">
+      <figcaption>Sketches of the complete "Attractive Home Furniture" collection organized by room: living room ($174), dining ($107), bedroom ($97), study ($52), kitchen ($55), and coffee table ($50). Each grouping shows the individual pieces that comprise that room's set.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- FLOOR PLANS -->
+<section id="plans" class="plans-section">
+  <div class="plans-inner">
+    <div class="reveal" style="text-align:center;">
+      <span class="section-label">Designed for Student Housing</span>
+      <h2 class="section-title">Floor Plans &amp; Layouts</h2>
+    </div>
+    <div class="plans-grid">
+      <div class="plan-card reveal">
+        <img src="images/IMG_3202.jpeg" alt="Student housing high-rise building typical floor plan">
+        <div class="plan-card-info">
+          <h3>Student Housing High Rise</h3>
+          <p>Typical floor plan for an 82&prime;&times;102&prime; student housing building with central open courts, stairways, entrance, laundry, and recreation room. Units are predominantly two-bedroom layouts arranged around walkways. Shown alongside a photograph of a multi-unit residential building with landscaping.</p>
+        </div>
+      </div>
+      <div class="plan-card reveal">
+        <img src="images/IMG_3203.jpeg" alt="Typical 2 bedroom unit floor plan at 1/4 inch scale">
+        <div class="plan-card-info">
+          <h3>Typical 2 Bedroom Unit &mdash; 515 sq. ft.</h3>
+          <p>Detailed floor plan at &frac14;&Prime;=1&prime;-0&Prime; scale showing a 26&prime;&times;20&prime; two-bedroom apartment fully furnished with "Be Your Own Furniture Maker" pieces. Each bedroom is priced at $136.80 for 6 pieces. The living/kitchen area includes $28.25 (1 piece), $63.10 (3 pieces), and $149.90 (9 pieces) groupings.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY: LIVING ROOM -->
+<section id="gallery">
+  <div class="gallery-section">
+    <div class="reveal" style="text-align:center;">
+      <span class="section-label">Photographs of Prototypes</span>
+      <h2 class="section-title">The Finished Collection</h2>
+    </div>
+
+    <div class="gallery-category reveal">
+      <h3 class="gallery-category-title">Living Room</h3>
+      <div class="gallery-grid">
+        <div class="gallery-item" onclick="openLightbox(this)">
+          <img src="images/IMG_3207.jpeg" alt="Complete living room set with sofa, coffee table, easy chair, foot stool, side table, and bookcase">
+          <div class="gallery-caption">
+            <p class="caption-title">Complete Living Room Set</p>
+            <p>The full living room arrangement featuring a glass-top coffee table, easy chair and foot stool with tropical-print cushions, side table, and modular bookcase. All pieces are built from natural pine with a warm honey finish, staged with plants and decorative accessories.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="gallery-category reveal">
+      <h3 class="gallery-category-title">Entertainment Center &amp; Bookcase</h3>
+      <div class="gallery-grid">
+        <div class="gallery-item" onclick="openLightbox(this)">
+          <img src="images/IMG_3212.jpeg" alt="Modular bookcase and entertainment center with TV, books, and decorative items">
+          <div class="gallery-caption">
+            <p class="caption-title">Modular Entertainment Center</p>
+            <p>A full-wall modular bookcase and entertainment center holding a television, books, wicker baskets, clock, wine bottle, decorative figurines, and plants. The stacked cube design allows flexible configuration and can grow with your collection.</p>
+          </div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this)">
+          <img src="images/IMG_3213.jpeg" alt="Close-up of bookcase shelves filled with books and decorative camel figurine">
+          <div class="gallery-caption">
+            <p class="caption-title">Bookcase Detail</p>
+            <p>Close-up view of the modular bookcase cubes filled with books and topped with a decorative camel figurine and trailing plants. The adjustable shelf heights accommodate different book sizes and display items.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="gallery-category reveal">
+      <h3 class="gallery-category-title">Bedroom</h3>
+      <div class="gallery-grid">
+        <div class="gallery-item" onclick="openLightbox(this)">
+          <img src="images/IMG_3214.jpeg" alt="Bedroom set with pine bed frame, headboard, side table with lamp, and chest">
+          <div class="gallery-caption">
+            <p class="caption-title">Bedroom Set</p>
+            <p>A complete bedroom arrangement with a pine bed frame and headboard, bedside table holding books and a lamp, and a chest of drawers. The bed features clean horizontal lines with an open-frame headboard design. Styled with a sage green comforter and striped pillows.</p>
+          </div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this)">
+          <img src="images/IMG_3215.jpeg" alt="Four views of the bedroom set from different angles">
+          <div class="gallery-caption">
+            <p class="caption-title">Bedroom &mdash; Four Angles</p>
+            <p>Four photographs showing the bedroom furniture from different perspectives: the bed with headboard, bedside table with lamp, chest with wicker storage baskets, and a wider view showing how all pieces work together in a small bedroom space.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="gallery-category reveal">
+      <h3 class="gallery-category-title">Study Room</h3>
+      <div class="gallery-grid">
+        <div class="gallery-item" onclick="openLightbox(this)">
+          <img src="images/IMG_3216.jpeg" alt="Study desk with chair, computer, and bookshelf from four angles">
+          <div class="gallery-caption">
+            <p class="caption-title">Study Desk &mdash; Four Views</p>
+            <p>Four photographs of the study room setup featuring a pine desk with an early iMac computer, cushioned desk chair, and matching bookshelf unit. Views show the workspace from the front, side, and at angles, demonstrating how the desk, chair, and storage pieces create a complete home office in a compact space.</p>
+          </div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this)">
+          <img src="images/IMG_3217.jpeg" alt="Study desk and bookshelf with computer setup, four alternate views">
+          <div class="gallery-caption">
+            <p class="caption-title">Study Room &mdash; Alternate Arrangements</p>
+            <p>Four additional views of the study furniture showing different layout configurations. The modular bookshelf can be positioned beside or behind the desk, and the chair cushion color coordinates with the overall room palette. A sailboat print on the wall completes the room.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="gallery-category reveal">
+      <h3 class="gallery-category-title">Kitchen &amp; Dining</h3>
+      <div class="gallery-grid">
+        <div class="gallery-item" onclick="openLightbox(this)">
+          <img src="images/IMG_3210.jpeg" alt="Kitchen shelving unit with dishes, cookware, and storage">
+          <div class="gallery-caption">
+            <p class="caption-title">Kitchen Shelving Unit</p>
+            <p>A pine kitchen shelving and storage unit displaying white dishes, plates, copper cookware, and kitchen accessories. The open-shelf design provides easy access to everyday items while the solid construction holds heavy dishware securely.</p>
+          </div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this)">
+          <img src="images/IMG_3211.jpeg" alt="Three views of kitchen shelving with dishes and storage baskets">
+          <div class="gallery-caption">
+            <p class="caption-title">Kitchen Storage &mdash; Three Views</p>
+            <p>Three photographs showing the kitchen furniture from different angles: a close-up of the adjustable shelving with dishes and plates, a wider shot showing the unit in context with the kitchen, and a detail view of the storage capacity with wicker baskets and cookware.</p>
+          </div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this)">
+          <img src="images/IMG_3218.jpeg" alt="Dining chair and kitchen table with place setting">
+          <div class="gallery-caption">
+            <p class="caption-title">Dining Chair &amp; Kitchen Table</p>
+            <p>Two photographs of the kitchen dining set on a green background. The top photo shows the pine dining chair with sage green cushion alongside the kitchen table set with dishes, cups, and a striped placemat, with a colorful tropical print on the wall. The bottom photo shows the same set from a different angle with the table drawer open, holding a Bible and newspaper, demonstrating built-in storage.</p>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+
+    <div class="gallery-category reveal">
+      <h3 class="gallery-category-title">Portable Storage</h3>
+      <div class="gallery-grid">
+        <div class="gallery-item" onclick="openLightbox(this)">
+          <img src="images/IMG_3219.jpeg" alt="Disassembled furniture pieces stored compactly on shelves">
+          <div class="gallery-caption">
+            <p class="caption-title">Compact Flat-Pack Storage</p>
+            <p>Disassembled furniture components stored on standard shelving, demonstrating the portability concept. All wooden pieces, cushion fabric, and hardware pack down into a compact 4&prime;&times;4&prime;&times;2&prime; footprint, ready for transport or storage in a closet.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ABOUT THE AUTHOR -->
+<section id="author" class="author-section">
+  <div class="author-inner reveal">
+    <span class="section-label">About the Author</span>
+    <p class="author-name">Walter K. Zell</p>
+    <p class="author-role">Architect</p>
+    <div class="author-text">
+      <p>Walter K. Zell was a Southern California architect known for his mid-century modern residential designs. His work in the Flintridge Hills of La Ca&ntilde;ada featured geometric lines, expansive glass panels, clerestory windows, and the seamless indoor-outdoor living that defines the best of mid-century California architecture.</p>
+      <p>With "Be Your Own Furniture Maker," he brought the same design philosophy&mdash;clean lines, economical materials, functional beauty&mdash;to affordable home furniture that anyone could build.</p>
+    </div>
+    <a class="author-link" href="https://medium.com/dilbeckinsights/the-mid-century-modern-roundup-af0305573e76" target="_blank" rel="noopener">Read the Press Feature &rarr;</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p class="footer-title">Be Your Own Furniture Maker</p>
+  <p>Affordable and Attractive Home Furniture &middot; Book 1</p>
+  <p style="margin-top:0.5rem;">By Walter K. Zell, Architect</p>
+</footer>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+  <img id="lightbox-img" src="" alt="">
+</div>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add('visible');
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+function openLightbox(el) {
+  const img = el.querySelector('img');
+  document.getElementById('lightbox-img').src = img.src;
+  document.getElementById('lightbox').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closeLightbox();
+});
+</script>
+
+</body>
+</html>
